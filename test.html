@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" itemscope="" itemtype="http://schema.org/WebPage">
 <head>
@@ -159,6 +158,45 @@ var JOT_siteRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ag
 <div xmlns="http://www.w3.org/1999/xhtml" class="announcements">
 <div class="sites-clear" style="padding: 0 0 5px;">
 </div>
+
+<div class="announcement">
+<h4><a href="/announcenets/nolabsinweek1" dir="ltr">TEST API!</a></h4>
+<span class="timestamp">
+<script type="text/javascript">
+      //<![CDATA[
+        function JOT_insertRelDate(timestamp, absTimeStr, isSiteLocale, dir) {
+          var relTimeStr = JOT_formatRelativeToNow(timestamp, isSiteLocale);
+          if (relTimeStr) {
+            if (isSiteLocale) {
+              document.write('<span timestamp="' + timestamp + '" issitelocale="' + isSiteLocale +
+                '" title="' + absTimeStr + '" dir="' + dir + '">' + relTimeStr + '<' + '/span>');
+            } else {
+              document.write('<span timestamp="' + timestamp + '" title="' + absTimeStr +
+              '" dir="' + dir + '">' + relTimeStr + '<' + '/span>');
+            }
+          } else {
+            document.write(absTimeStr);
+          }
+        }
+      //]]>
+</script>
+    
+  
+  posted <span dir="ltr">Feb 3, 2014, 5:21 PM</span> by JC Nam
+
+                    
+                  </span>
+<p>
+<table cellspacing="0" class="sites-layout-name-one-column sites-layout-hbox"><tbody><tr><td class="sites-layout-tile sites-tile-name-content-1"><div dir="ltr">There are no labs in Week 1 (Feb. 4, Tue ~ Feb. 10, Mon) to sync lecture and tutorial schedules.<div>Please, note that each Week starts on every Tuesday and ends on Monday.</div></div></td></tr></tbody></table>
+</p>
+<div class="postfooter">
+<p>
+</p>
+</div>
+</div>
+
+
+
 <div class="announcement">
 <h4><a href="/announcenets/pop-upquizonfeb11" dir="ltr">Pop-up quiz on Feb 11!</a></h4>
 <span class="timestamp">
