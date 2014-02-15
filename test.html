@@ -162,24 +162,7 @@ var JOT_siteRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ag
 <div class="announcement">
 <h4><a href="/announcenets/nolabsinweek1" dir="ltr">TEST API!</a></h4>
 <span class="timestamp">
-<script type="text/javascript">
-      //<![CDATA[
-        function JOT_insertRelDate(timestamp, absTimeStr, isSiteLocale, dir) {
-          var relTimeStr = JOT_formatRelativeToNow(timestamp, isSiteLocale);
-          if (relTimeStr) {
-            if (isSiteLocale) {
-              document.write('<span timestamp="' + timestamp + '" issitelocale="' + isSiteLocale +
-                '" title="' + absTimeStr + '" dir="' + dir + '">' + relTimeStr + '<' + '/span>');
-            } else {
-              document.write('<span timestamp="' + timestamp + '" title="' + absTimeStr +
-              '" dir="' + dir + '">' + relTimeStr + '<' + '/span>');
-            }
-          } else {
-            document.write(absTimeStr);
-          }
-        }
-      //]]>
-</script>
+
     
   
   posted <span dir="ltr">Feb 3, 2014, 5:21 PM</span> by JC Nam
