@@ -1,0 +1,7 @@
+git clone https://github.com/sanke93/Infosmos.git
+git checkout gh-pages
+
+git add *
+git pull origin gh-pages
+git commit -am "pull"
+git push origin gh-pages
