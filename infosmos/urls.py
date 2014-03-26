@@ -2,11 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from infosmos.views import home_index
 from django.contrib import admin
+from user_profile import urls
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', home_index, name = 'home_index'), #home page
+    url(r'^$', home_index, name = 'home_index'),
+    url(r'^register/$', include('user_profile.urls'), name='register'),
+    #home page
     # Examples:
     # url(r'^$', 'infosmos.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),

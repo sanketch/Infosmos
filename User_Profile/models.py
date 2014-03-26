@@ -6,23 +6,27 @@ from django.contrib.auth.models import User
 # Create your models here.
 class UserProfile(models.Model):
 #This is a start of the user profile page
-    GENDER_CHOICES = (
-        ('m', 'Male'),
-        ('f', 'Female'),
-        ('n', 'NA')
-    )
-   
-#basic user fields, more probably for later
-    user = models.ForeignKey(User, unique=True)
-    birth_date = models.DateField(null= True)
-    address = models.CharField(max_length=150, null=True)
+    user = models.OneToOneField(User)
+    #facebook = models.URLField(blank=True)
+    #picture = models.ImageField(upload_to='profile_images', blank=True)
+    #GENDER_CHOICES = (
+    #    ('m', 'Male'),
+    #    ('f', 'Female'),
+    #    ('n', 'NA')
+    #)
+    #basic user fields, more probably for later
+    #user = models.ForeignKey(User, unique=True)
+    #birth_date = models.DateField(null= True)
+    #location = models.CharField(max_length=150, null=True)
     #skills = models.ForeignKey(Skills, null=True)
-    #desires = models.ForeignKey(Desires, null=True)
-    about = models.CharField(max_length=400, null=True )
+    ##desires = models.ForeignKey(Desires, null=True)
+    about = models.CharField(max_length=400, null=True)
+    def __unicode__(self):
+        return self.user.username
     
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-        
-        
-post_save.connect(create_user_profile, sender=User)
+#def create_user_profile(sender, instance, created, **kwargs):
+#    if created:
+#        UserProfile.objects.create(user=instance)
+#
+#
+#post_save.connect(create_user_profile, sender=User)
