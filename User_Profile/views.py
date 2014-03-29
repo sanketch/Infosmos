@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from user_profile.forms import UserForm, UserProfileForm
+from User_Profile.forms import UserForm, UserProfileForm
 
 def register(request):
     context = RequestContext(request)
