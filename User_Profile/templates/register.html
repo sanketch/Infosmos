@@ -8,25 +8,58 @@
         <a href="/../">Goto Dashboard</a><br />
         <a href="/../">Return to the homepage.</a><br />
         {% else %}
-        <strong>Register here!</strong><br />
+       
         <div class="row">
-            <div class="large-3 columns"></div>
-            <div class="large-6 columns"><form id="user_form" method="post" action="/register/"
-                enctype="multipart/form-data">
+			 
+			<div class="small-3 small-centered medium-3 medium-centered large-3  large-centered columns"></div>
+			
+			<div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">
+			<h2><strong>Register here!</strong></h2><br />
+				<form id="user_form" method="post" action="/register/"
+					enctype="multipart/form-data">
 
-            {% csrf_token %}
+				{% csrf_token %}
 
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
+						<!-- Display each form. The as_p method wraps each element in a paragraph
+							 (<p>) element. This ensures each element appears on a new line,
+							 making everything look neater. -->
+						
+						{% for field in user_form %}
+							<div class="row">
+								<div class="large-12 columns">
+									{% if field.errors %}
+									<label class ="error">{{field.html_name}} {{ field}}
+										<small class="error">{{field.html_name}} is Required</small>
+									</label>
+									
+									{% else %}
+									<label>{{field.html_name}} {{ field}}</label>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+						
+						{% for field in profile_form %}
+							<div class="row">
+								<div class="large-12 columns">
+									{% if field.errors %}
+									<label class ="error">{{field.html_name}} {{ field}}
+										<small class="error">{{field.html_name}} is Required</small>
+									</label>
+									
+									{% else %}
+									<label>{{field.html_name}} {{ field}}</label>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}					
 
-            <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Register" />
-        </form>
-       </div>
-            <div class="large-3 columns"></div>
+						<!-- Provide a button to click to submit the form. -->
+						<input class ="button expand" type="submit" name="submit" value="Register" />
+				</form>
+			</div>
+            
+			<div class="small-3 small-centered medium-3 medium-centered large-3  large-centered columns"></div>
         </div>
          {% endif %}
 
