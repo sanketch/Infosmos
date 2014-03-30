@@ -5,6 +5,4 @@ install: pip install --use-mirrors -r requirements.txt
 notifications:
   email:
    - sanke93@gmail.com
-after_success :
-  - git push  git@heroku.com:infosmos.git
   
