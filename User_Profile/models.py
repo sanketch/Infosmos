@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     #facebook = models.URLField(blank=True)
     #picture = models.ImageField(upload_to='profile_images', blank=True)
-    website = models.CharField(max_length=80, null=True)
+    #website = models.CharField(max_length=80, null=True)
     #GENDER_CHOICES = (
     #    ('m', 'Male'),
     #    ('f', 'Female'),
@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     #location = models.CharField(max_length=150, null=True)
     #skills = models.ForeignKey(Skills, null=True)
     ##desires = models.ForeignKey(Desires, null=True)
-    about = models.CharField(max_length=400, null=True)
+    city = models.CharField(max_length=400, null=True)
     def __unicode__(self):
         return self.user.username
     
