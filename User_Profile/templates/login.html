@@ -3,17 +3,18 @@
 {% block title %}Infosmos Home Page{% endblock %}
 {% block content %}
     <div class="row">
-        <div class="small-6 large-centered columns">
-        <h1>Login to Infosmos!</h1>
+        <div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">
+        <h2><strong>Login to Infosmos!</strong></h2>
 
         <form id="login_form" method="post" action="/login/">
             {% csrf_token %}
+			
             Username: <input type="text" name="username" value="" size="50" />
             <br />
             Password: <input type="password" name="password" value="" size="50" />
             <br />
 
-            <input type="submit" value="submit" />
+			<input class="button expand" type="submit" value="Sign In" />
         </form>
         </div>
     </div>
