@@ -8,7 +8,7 @@ class UserProfile(models.Model):
 #This is a start of the user profile page
     user = models.OneToOneField(User)
     #facebook = models.URLField(blank=True)
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    #picture = models.ImageField(upload_to='profile_images', blank=True)
     website = models.CharField(max_length=80, null=True)
     #GENDER_CHOICES = (
     #    ('m', 'Male'),
