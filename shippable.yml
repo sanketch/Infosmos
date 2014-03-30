@@ -1,8 +1,8 @@
 python:
     - "2.7"
 language: python
-before_script: mkdir -p shippable/codecoverage shippable/testresults
 install: pip install --use-mirrors -r requirements.txt
 notifications:
   email:
    - sanke93@gmail.com
+  
