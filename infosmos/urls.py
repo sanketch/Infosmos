@@ -3,12 +3,15 @@ from django.views.generic import TemplateView
 from infosmos.views import home_index
 from django.contrib import admin
 from User_Profile import urls
+from User_Profile import views
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home_index, name = 'home_index'),
     url(r'^register/$', include('User_Profile.urls'), name='register'),
+    url(r'^login/$', views.user_login, name='login'),
+    url(r'^dashboard/$', views.user_dashboard, name='dashboard'),
     #home page
     # Examples:
     # url(r'^$', 'infosmos.views.home', name='home'),

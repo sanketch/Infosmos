@@ -4,9 +4,7 @@
 {% block content %}
 
         {% if registered %}
-        <strong>Welcome!</strong>
-        <a href="/../">Goto Dashboard</a><br />
-        <a href="/../">Return to the homepage.</a><br />
+        <strong>Welcome {{ user.name }}</strong>
         {% else %}
         <strong>Register here!</strong><br />
         <div class="row">

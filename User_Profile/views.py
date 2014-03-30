@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from User_Profile.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
 
 def register(request):
     context = RequestContext(request)
@@ -35,3 +37,37 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+
+def user_login(request):
+    context = RequestContext(request)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+
+            if user.is_active:
+
+                login(request, user)
+                return HttpResponseRedirect('../dashboard')
+            else:
+
+                return HttpResponse("Your account is disabled.")
+        else:
+
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+
+    else:
+
+        return render_to_response('login.html', {}, context)
+
+
+def user_dashboard(request):
+    context = RequestContext(request)
+    if not request.user.is_authenticated():
+        return render_to_response('dashboard.html', {}, context)
+    else:
+        return HttpResponse("You are not logged in.")

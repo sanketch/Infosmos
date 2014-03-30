@@ -1,0 +1,21 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %} <!--loads the static folder containing css and images -->
+{% block title %}Infosmos Home Page{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="small-6 large-centered columns">
+        <h1>Login to Infosmos!</h1>
+
+        <form id="login_form" method="post" action="/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+            <input type="submit" value="submit" />
+        </form>
+        </div>
+    </div>
+
+{% endblock %}
