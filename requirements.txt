@@ -1,5 +1,2 @@
 Django==1.6.2
-ete2==2.1rev544
-py2exe==0.6.9
-pyDatalog==0.14.1
 virtualenv==1.11.4
