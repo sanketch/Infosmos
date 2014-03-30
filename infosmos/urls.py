@@ -25,3 +25,7 @@ urlpatterns = patterns('',
     #url(r'^accounts/loggedin/$, 'django_test.views.loggedin'),
     #url(r'^accounts/invalid$', 'django_test.views.invalid_login'),
 )
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+urlpatterns += staticfiles_urlpatterns()
+#to deploy
