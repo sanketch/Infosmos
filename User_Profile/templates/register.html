@@ -4,9 +4,16 @@
 {% block content %}
 
         {% if registered %}
-        <strong>Welcome!</strong>
-        <a href="/../">Goto Dashboard</a><br />
-        <a href="/../">Return to the homepage.</a><br />
+            <div class="row">
+                <br/><br/><br/>
+                <div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">
+                    <strong>Welcome! {{ user.username }}</strong>
+                        <a href="../dashboard">Goto Dashboard</a><br />
+                        <a href="/../">Return to the homepage.</a><br />
+                    <script>window.location="../dashboard";</script>
+                </div>
+            </div>
+
         {% else %}
        
         <div class="row">

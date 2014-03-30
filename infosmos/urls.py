@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^register/$', include('User_Profile.urls'), name='register'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^dashboard/$', views.user_dashboard, name='dashboard'),
+    url(r'^logout/$', views.user_logout, name='logout'),
     #home page
     # Examples:
     # url(r'^$', 'infosmos.views.home', name='home'),

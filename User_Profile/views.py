@@ -4,6 +4,8 @@ from django.shortcuts import render_to_response
 from User_Profile.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def register(request):
     context = RequestContext(request)
@@ -14,7 +16,6 @@ def register(request):
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
-            # Save the user's form data to the database.
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -64,10 +65,13 @@ def user_login(request):
 
         return render_to_response('login.html', {}, context)
 
-
+@login_required
 def user_dashboard(request):
     context = RequestContext(request)
-    if not request.user.is_authenticated():
-        return render_to_response('dashboard.html', {}, context)
-    else:
-        return HttpResponse("You are not logged in.")
+    return render_to_response('dashboard.html', {}, context)
+
+@login_required
+def user_logout(request):
+    logout(request)
+    #return HttpResponse("You are not logged in.")
+    return HttpResponseRedirect('../')
