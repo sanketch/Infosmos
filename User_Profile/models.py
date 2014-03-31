@@ -4,6 +4,19 @@ from django.contrib.auth.models import User
 #signals sends out information to other parts of the program
 #auth is authentication. I'm not quite sure how it works yet
 # Create your models here.
+
+class Skills(models.Model):
+    user =models.ForeignKey(User)
+    skill =models.CharField(db_index=True, max_length=40, null=True)
+    yearxp = models.IntegerField()
+    description=models.CharField(max_length=400,null=True)
+    
+class Desires(models.Model):
+    user=models.ForeignKey(User)
+    wants = models.CharField(db_index=True, max_length=40, null=True)
+    description =models.CharField(max_length=400,null=True)
+    
+    
 class UserProfile(models.Model):
 #This is a start of the user profile page
     user = models.OneToOneField(User)
@@ -19,15 +32,9 @@ class UserProfile(models.Model):
     #user = models.ForeignKey(User, unique=True)
     #birth_date = models.DateField(null= True)
     #location = models.CharField(max_length=150, null=True)
-    #skills = models.ForeignKey(Skills, null=True)
-    ##desires = models.ForeignKey(Desires, null=True)
-    city = models.CharField(max_length=400, null=True)
+    skills = models.ManyToManyField('Skills',blank=True)
+    desires = models.ManyToManyField('Desires',blank=True)
+    city = models.CharField(db_index=True,max_length=400, null=True)
     def __unicode__(self):
         return self.user.username
     
-#def create_user_profile(sender, instance, created, **kwargs):
-#    if created:
-#        UserProfile.objects.create(user=instance)
-#
-#
-#post_save.connect(create_user_profile, sender=User)
