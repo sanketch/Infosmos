@@ -1,6 +1,7 @@
 {% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Infosmos Home Page{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">
@@ -9,9 +10,9 @@
         <form id="login_form" method="post" action="/login/">
             {% csrf_token %}
 			
-            Username: <input type="text" name="username" value="" size="50" />
+            <label>username <input type="text" name="username" value="" size="50" /></label>
             <br />
-            Password: <input type="password" name="password" value="" size="50" />
+            <label>password <input type="password" name="password" value="" size="50" /></label>
             <br />
 
 			<input class="button expand" type="submit" value="Sign In" />

@@ -3,19 +3,58 @@
 <html lang="en">
     <head>
         <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="{% static "css/foundation.css" %}" /> <!-- CSS -->
-        <link rel="stylesheet" href="{% static "css/normalize.css." %}" />
-        <script src="{% static "js/vendor/modernizr.js" %}"></script>
+        <link rel="stylesheet" href="{% static 'css/foundation.css' %}" /> <!-- CSS -->
+		<link rel="stylesheet" href="{% static 'css/normalize.css.' %}" />
+        <script src="{% static 'js/vendor/modernizr.js' %}"></script>
     </head>
     <body>
-        {% block content %}{% endblock %}
+		{% block navigator %}		
+		<div class="contain-to-grid sticky" data-options="sticky_on: large" >
+			<nav class="top-bar" data-topbar >
+				  <ul class="title-area">
+					<li class="name">
+					  <h1 style="font-size: 22pt;" ><a herf="#" ><strong>Infosmos</strong></h1>
+					</li>
+				  </ul>
+				<section class="top-bar-section" >
+					<ul class="right">
+					<!-- Menu Section -->
+					<li class="sub-nav">
+						{% block navigator-menu %}
+						{% endblock %}
+					</li>
+					</ul>
+					
+				</section>
+			</nav>
+		</div>
+		{% endblock %}
+		
+        {% block content %}
+		{% endblock %}
+		
         {% block footer %}
-        <hr>
+        <footer class="row">
+			<div class="large-12 columns">
+				<hr />
+					<div class="row">
+						<div class="large-6 columns">
+						<p>Created for COMP 3111 Class.</p>
+					</div>
+						<div class="large-6 columns">
+						<ul class="inline-list right">
+							<li><a href="#">Contact</a></li>
+							<li><a href="#">About</a></li>
+						</ul>
+					</div>
+				  </div>
+				</div>
+		</footer>
         {% endblock %}
-        <script src="{% static "js/vendor/jquery.js" %}"></script>
-        <script src="{% static "js/vendor/fastclick.js" %}"></script>
+        <script src="{% static 'js/vendor/jquery.js' %}"></script>
+        <script src="{% static 'js/vendor/fastclick.js' %}"></script>
 
-        <script src="{% static "js/foundation.min.js" %}"></script> <!-- JavaScript -->
+        <script src="{% static 'js/foundation.min.js' %}"></script> <!-- JavaScript -->
         <script>
             $(document).foundation();
         </script>

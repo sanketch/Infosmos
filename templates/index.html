@@ -1,26 +1,34 @@
 {% extends "base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Infosmos Home Page{% endblock %}
+
+{% block navigator-menu %}
+		<li data-magellan-arrival="build"><a href="#about"><b>About</b> </a></li>
+		<li><a href="#how" ><b>How it works</b></a></li>
+		<li><a href="#contact"><b>Contact</b></a></li>
+{% endblock %}
+
+
 {% block content %}
-    <header style="background-image:url('{% static "img/home/tutor.jpg" %}');background-size: 100%;background-size: cover;min-height: 650px;
-">
-        <div class="row">
-             <div class="large-3 columns">
-                  <h1><img src="{% static "img/Infosmos_pre.png" %}" width="220px" height="58px"></h1>
+<header style="background-image:url('{% static 'img/home/tutor.jpg'%}');background-size: 100%;background-size: cover;min-height: 650px;" >
+		
+		
+<div class="row">
+             <div class="small-3 medium-3 large-3 columns" style="padding: 10px"">
+				
              </div>
-             <div class="large-9 columns">
+             <div class="small-9 medium-9 large-9 columns">
+				
                   <ul class="button-group right">
-                    <li><a href="#about" class="button">About </a></li>
-                    <li><a href="#" class="button">How it works</a></li>
-                    <li><a href="#" class="button">Contact</a></li>
-                    <li><a href="#" class="button">Login</a></li>
+					
                   </ul>
              </div>
         </div>
         <div class="row">
             <br/><br/><br/><br/>
             <div class="large-5 large-offset-7 columns" style="background-color: rgba(255, 255, 255, 0.5);">
-                    <h3>Infosmos matches you with someone with similar interest, thus allowing both of you to improve your skills. Sign up now to find a buddy!</h3>
+					<img src="{% static "img/Infosmos_pre.png" %}" width="280px" height="60px" style="padding-top: 15px">
+					<h4>Infosmos matches you with someone with similar interest, thus allowing both of you to improve your skills.<br>Sign up now to find a buddy!</h4>
                     <br/>
                     <div clas="small-5 large-centered columns">
 {#								 <input type = "text" placeholder = "Full name" />#}
@@ -33,18 +41,21 @@
             </div>
         </div>
     </header>
-
-      <div  id="about" class="row">
+	<a name="about"></a>
+      <div  class="row">
       <br/><br/><br/>
         <div class="large-12 columns">
           <h2 align = "center">About</h2>
           <hr>
-            <p>Content goes here</p>
+            <p>Content goes here
+			<br>example: A tutor is an instructor who gives private lessons. Shadow education is a pejorative name for private supplementary tutoring that is offered outside the mainstream education system.
+			<br>Online tutoring is a new way for a student to receive help, either scheduled or on-demand. Sessions are done through an application where a student and tutor can communicate. Common tools include chat, whiteboard, web conferencing, teleconferencing and other specialized applets which make it easier to convey information back and forth. For example, there are specialized applets designed specifically for mathematics which allow the use of mathematical symbols.
+			<br>Online tutoring has been gaining popularity over the past couple of years due to the ease of being able to connect to a tutor at moment's notice when help is required.[citation needed] This is especially effective when a student is studying for a test that is scheduled for the next day at school and is stumped on a particular problem. Not all online tutoring companies offer an on-demand tutoring service.</p>
         </div>
       </div>
       <!-- Second Band (Image Left with Text) -->
 
-      <div class="row">
+      <div id="how" class="row">
         <h2 align = "center">How it works</h2>
           <hr>
         <div class="large-4 columns">
@@ -64,30 +75,12 @@
       </div>
 
 
-      <div class="row">
+      <div id="contact" class="row">
       <h2 align = "center">Contact Us</h2>
                     <hr>
 
       </div>
-
-
-      <!-- Footer -->
-
-      <footer class="row">
-        <div class="large-12 columns">
-          <hr />
-          <div class="row">
-            <div class="large-6 columns">
-              <p>Created for COMP 3111 Class.</p>
-            </div>
-            <div class="large-6 columns">
-              <ul class="inline-list right">
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">About</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
-
 {% endblock %}
+
+      <!-- Footer-->
+
