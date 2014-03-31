@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from User_Profile.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 def register(request):
     context = RequestContext(request)
@@ -12,7 +16,6 @@ def register(request):
         user_form = UserForm(data=request.POST)
         profile_form = UserProfileForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
-            # Save the user's form data to the database.
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -35,3 +38,40 @@ def register(request):
             'register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
+
+def user_login(request):
+    context = RequestContext(request)
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+
+            if user.is_active:
+
+                login(request, user)
+                return HttpResponseRedirect('../dashboard')
+            else:
+
+                return HttpResponse("Your account is disabled.")
+        else:
+
+            print "Invalid login details: {0}, {1}".format(username, password)
+            return HttpResponse("Invalid login details supplied.")
+
+    else:
+
+        return render_to_response('login.html', {}, context)
+
+@login_required
+def user_dashboard(request):
+    context = RequestContext(request)
+    return render_to_response('dashboard.html', {}, context)
+
+@login_required
+def user_logout(request):
+    logout(request)
+    #return HttpResponse("You are not logged in.")
+    return HttpResponseRedirect('../')

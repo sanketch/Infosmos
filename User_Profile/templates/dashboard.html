@@ -1,0 +1,20 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %} <!--loads the static folder containing css and images -->
+{% block title %}Infosmos Home Page{% endblock %}
+{% block content %}
+        <div class="row">
+             <div class="large-3 columns">
+                  <h1><img src="{% static "img/Infosmos_pre.png" %}" width="220px" height="58px"></h1>
+             </div>
+             <div class="large-9 columns">
+                  <ul class="button-group right">
+                    <li class="button">Welcome {{ user.username }}</li>
+                    <li><a href="" class="button">Dashboard </a></li>
+                     <li><a href="#" class="button">Matches</a></li>
+                    <li><a href="#" class="button">Settings</a></li>
+                    <li><a href="../logout/" class="button">Logout</a></li>
+                  </ul>
+             </div>
+        </div>
+
+{% endblock %}
