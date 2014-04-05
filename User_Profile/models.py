@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Skills(models.Model):
     user =models.ForeignKey(User)
     skill =models.CharField(db_index=True, max_length=40, null=True)
-    yearxp = models.IntegerField()
+    yearxp = models.IntegerField(null=True)
     description=models.CharField(max_length=400,null=True)
     
 class Desires(models.Model):
@@ -16,6 +16,15 @@ class Desires(models.Model):
     wants = models.CharField(db_index=True, max_length=40, null=True)
     description =models.CharField(max_length=400,null=True)
     
+class Askill(models.Model):
+    userprofile=models.ForeignKey('UserProfile')
+    skill= models.ForeignKey('Skills')
+    date_created=models.DateField()
+        
+class Adesire(models.Model):
+    userprofile=models.ForeignKey('UserProfile')
+    desire= models.ForeignKey('Desires')
+    date_created=models.DateField()   
     
 class UserProfile(models.Model):
 #This is a start of the user profile page
@@ -32,9 +41,10 @@ class UserProfile(models.Model):
     #user = models.ForeignKey(User, unique=True)
     #birth_date = models.DateField(null= True)
     #location = models.CharField(max_length=150, null=True)
-    skills = models.ManyToManyField('Skills',blank=True)
-    desires = models.ManyToManyField('Desires',blank=True)
+    skills = models.ManyToManyField(Skills,through='Askill')
+    desires = models.ManyToManyField(Desires,through='Adesire')
     city = models.CharField(db_index=True,max_length=400, null=True)
     def __unicode__(self):
         return self.user.username
     
+

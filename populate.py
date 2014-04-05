@@ -6,7 +6,13 @@ import datetime
 #and then type execfile('populate.py')
 #it automatically creates the admin account
 #WARNING: This flushes the database completely
+
+def get_model_fields(model):
+    print model._meta.get_all_field_names()
+    return
+
 def populate():
+    get_model_fields(UserProfile)
     admin= User.objects.create_user('admin', 'a@gmail.com', 'qwerty123')
     joyyie = User.objects.create_user( 'joyyie', 'lolcats@gmail.com', 'e')
     cat = User.objects.create_user( 'cat', 'l2olcats@gmail.com', 'e')
@@ -28,16 +34,21 @@ def populate():
         i.last_login=datetime.datetime.today()
       
         i.save()
+        s = Skills(user=i, skill='tiddlewinks', yearxp=1,description="Yeah bro")
+        s.save()
+        d = Desires(user=i, wants='fortran', description="Yeah bro")
+        d.save()
         r =UserProfile(user=i,city='Detroit')    
         r.save()
-
+        s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+        s1.save()
+        d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+        d1.save()
 if __name__=='__main__':
     print "starting population script"
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infosmos.settings')
-    from django.conf import settings
-    from django.db import models
     from django.contrib.auth.models import User
-    from User_Profile.models import *
+    from User_Profile.models import UserProfile, Skills, Desires, Askill, Adesire
     from django.core import management
     management.call_command('flush', verbosity=0, interactive=False)
     populate()
