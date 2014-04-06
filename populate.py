@@ -1,11 +1,23 @@
 import os
 import datetime
+import random
+import string
 
 #yeah this is one of the most retarded modules ever written
 #To run, you have to go to manage.py shell
 #and then type execfile('populate.py')
 #it automatically creates the admin account
 #WARNING: This flushes the database completely
+def randskill():
+    "This function returns a random skill from a small list"
+    skillset = ['karate','judo','mandarin','spanish','english','jogging',
+                'welding','writing','painting','drawing','acting','soccer',
+                'programming']
+    return random.choice(skillset)
+
+def user_gen(size=6, chars=string.ascii_lowercase):
+    return ''.join(random.choice(chars) for _ in range(size))
+
 
 def get_model_fields(model):
     print model._meta.get_all_field_names()
@@ -21,6 +33,7 @@ def populate():
     pig = User.objects.create_user( 'regibald', 'lolc5ats@gmail.com', '0')
     donkey = User.objects.create_user( 'donkey', 'lolca6ts@gmail.com', 'pop')
     human = User.objects.create_user( 'human', 'lolcat7s@gmail.com', 'pa')
+    
     a = [admin,joyyie,cat,dog,cow,pig,donkey,human]
 
     for i in a:
@@ -34,9 +47,9 @@ def populate():
         i.last_login=datetime.datetime.today()
       
         i.save()
-        s = Skills(user=i, skill='tiddlewinks', yearxp=1,description="Yeah bro")
+        s = Skills(user=i, skill=randskill(), yearxp=1,description="Yeah bro")
         s.save()
-        d = Desires(user=i, wants='fortran', description="Yeah bro")
+        d = Desires(user=i, wants=randskill(), description="Yeah bro")
         d.save()
         r =UserProfile(user=i,city='Detroit')    
         r.save()
@@ -44,6 +57,28 @@ def populate():
         s1.save()
         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
         d1.save()
+        
+        
+    ranger = int(raw_input('How many users do you want'))
+    for j in xrange(0,ranger):
+        user1 = user_gen()
+        x= User.objects.create_user(user1, 'a@gmail.com', 'rererty123')
+        x.first_name = 'popop'
+        x.is_superuser=True
+        x.is_staff=False
+        x.save()
+        s = Skills(user=x, skill=randskill(), yearxp=1,description="Yeah bro")
+        s.save()
+        d = Desires(user=x, wants=randskill(), description="Yeah bro")
+        d.save()
+        r =UserProfile(user=x,city='Detroit')    
+        r.save()
+        s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+        s1.save()
+        d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+        d1.save()
+        
+        
 if __name__=='__main__':
     print "starting population script"
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infosmos.settings')
@@ -52,5 +87,5 @@ if __name__=='__main__':
     from django.core import management
     management.call_command('flush', verbosity=0, interactive=False)
     populate()
-    
+    print "Population completed."
     
