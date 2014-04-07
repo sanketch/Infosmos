@@ -10,7 +10,7 @@
 
 
 {% block content %}
-<header style="background-image:url('{% static 'img/background.jpg'%}');background-size: 100%;background-size: cover;min-height: 650px;" >
+<header style="background-image:url('{% static 'img/home/tutor.jpg'%}');background-size: 100%;background-size: cover;min-height: 650px;" >
 
 
 <div class="row">
@@ -27,23 +27,7 @@
         <div class="row">
             <br/><br/>
 			<div class="large-7 columns">
-			<ul class="example-orbit" data-orbit>
-  <li>
-    <img src="{% static "img/sliderimages/Slide1.JPG" %}" alt="slide 1" />
-  </li>
-  <li>
-    <img src="{% static "img/sliderimages/Slide2.JPG" %}" alt="slide 2" />
-  </li>
-  <li>
-    <img src="{% static "img/sliderimages/Slide3.JPG" %}" alt="slide 3" />
-  </li>
-  <li>
-    <img src="{% static "img/sliderimages/Slide4.JPG" %}" alt="slide 4" />
-  </li>
-  <li>
-    <img src="{% static "img/sliderimages/Slide5.JPG" %}" alt="slide 5" />
-  </li>
-</ul>
+			
 </div>
             <div class="large-5 columns" style="background-color: rgba(255, 255, 255, 0.5);">
 					<img src="{% static "img/Infosmos_pre.png" %}" width="420px" height="90px" style="padding-top: 15px">
@@ -66,30 +50,48 @@
 	<a name="about"></a>
       <div  class="row">
       <br/><br/><br/>
-        <div class="large-12 columns">
-	
-		
-          <h2 align = "center">About</h2>
+	  <div class="large-7 columns">
+				<ul class="example-orbit" data-orbit>
+		  <li>
+			<img src="{% static "img/sliderimages/Slide1.JPG" %}" alt="slide 1" />
+		  </li>
+		  <li>
+			<img src="{% static "img/sliderimages/Slide2.JPG" %}" alt="slide 2" />
+		  </li>
+		  <li>
+			<img src="{% static "img/sliderimages/Slide3.JPG" %}" alt="slide 3" />
+		  </li>
+		  <li>
+			<img src="{% static "img/sliderimages/Slide4.JPG" %}" alt="slide 4" />
+		  </li>
+		  <li>
+			<img src="{% static "img/sliderimages/Slide5.JPG" %}" alt="slide 5" />
+		  </li>
+		</ul>
+		</div>
+		<div class="large-5 columns">
+	      <h2 align = "center">About</h2>
           <hr>
 		  <p> 
 		   There is a lot of information available on the internet. There are many social platforms connecting people. Our goal is to merge the two. Infosmos is a web platform that matches people for mutual enlightenment and knowledge sharing. 
 		   It is inspired by the idea that the natural tendency of information is to flow from higher to lower concentration and that it is natural for people with similar interests to connect -- Therefore, we believe in "Osmosis of Information" or "Infosmos". 
 		   To find a "buddy" who shares a common interest or find a "mentor" to guide you or for an expert who is looking for mentees, Infosmos is at your service!
     	</div>
+		
       </div>
       <!-- Second Band (Image Left with Text) -->
-
-      <div id="how" class="row">
-        <h2 align = "center">How</h2>
+	  
+      <div class="row">
+		<h2 id="how" align = "center">How</h2>
           <hr>
         <div class="large-4 columns">
-		<h3>
+		<h4>
 		1. Sign-in or sign up to create a profile
 		<br/> <br/>
 		2. Update your interests
 		</br> </br>
 		3. Find a match
-		</h3>
+		</h4>
         </div>
         <div class="large-8 columns">
           <img src="{% static "img/howinfosmos.jpg" %}">
