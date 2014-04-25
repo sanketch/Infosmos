@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from infosmos.views import home_index
 from django.contrib import admin
-from User_Profile import urls
 from User_Profile import views
 admin.autodiscover()
 
