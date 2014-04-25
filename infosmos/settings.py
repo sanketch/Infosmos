@@ -48,6 +48,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'User_Profile',
+    
+    #for test
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,3 +102,13 @@ STATIC_URL = '/static/' # You may find this is already defined as such.
 STATICFILES_DIRS = (
     STATIC_PATH,
 )
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the  apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=User_Profile',
+    '--cover-html',
+]
