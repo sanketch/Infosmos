@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'User_Profile',
-    
+    'contact',
     #for test
     'django_nose',
 )
@@ -65,6 +65,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'infosmos.urls'
 
 WSGI_APPLICATION = 'infosmos.wsgi.application'
+
 
 
 # Database
@@ -112,3 +113,15 @@ NOSE_ARGS = [
     '--cover-package=User_Profile',
     '--cover-html',
 ]
+
+#for emails
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#if DEBUG:
+#    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#    EMAIL_FILE_PATH = '/messages'
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_HOST_USER = 'sbchauhan@connect.ust.hk'
+EMAIL_HOST_PASSWORD = 'U3RhGyugpH_IOf-MJrmFuQ'
+DEFAULT_FROM_EMAIL = 'sanke93@gmail.com'
+EMAIL_PORT = 587

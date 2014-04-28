@@ -1,0 +1,38 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %} <!--loads the static folder containing css and images -->
+{% block title %}Infosmos Contact Page{% endblock %}
+
+{% block content %}
+{#    <div class="row">#}
+{#        <div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">#}
+{#        <form action="/contact/" method="post">{% csrf_token %}#}
+{#            {{ form.as_p }}#}
+{#        <input type="submit" value="Submit" />#}
+{#        </form>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#{% endblock %}#}
+{##}
+{##}
+{#{% block content-wrap %}#}
+
+                <div class="row">
+                <div class="small-6 small-centered medium-6 medium-centered large-6 large-centered columns">
+{#                      <form action="/contact/" method="post">{% csrf_token %}#}
+{#                        <p>Subject: <input type="text" name="subject"></p>#}
+{#                        <p>Your e-mail (optional): <input type="text" name="email"></p>#}
+{#                        <p>Message: <textarea name="message" rows="10" cols="50"></textarea></p>#}
+{#                        <input type="submit" value="Submit">#}
+{#                      </form>#}
+                    <form action="" method="post">
+                        <table>
+                            {{ form.as_table }}
+                        </table>
+                        {% csrf_token %}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                </div>
+
+{% endblock %}

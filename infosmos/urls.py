@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^login/$', views.user_login, name='login'),
     url(r'^dashboard/$', views.user_dashboard, name='dashboard'),
     url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^contact/$', 'contact.views.contact', name='contact'),
+    url(r'^thanks/$', 'contact.views.thanks', name='thankyou'),
     #home page
     # Examples:
     # url(r'^$', 'infosmos.views.home', name='home'),

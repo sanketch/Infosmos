@@ -32,11 +32,13 @@ class UserProfile(models.Model):
     #facebook = models.URLField(blank=True)
     #picture = models.ImageField(upload_to='profile_images', blank=True)
     #website = models.CharField(max_length=80, null=True)
-    #GENDER_CHOICES = (
-    #    ('m', 'Male'),
-    #    ('f', 'Female'),
-    #    ('n', 'NA')
-    #)
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+    gender = models.CharField(max_length=2,
+                                      choices=GENDER_CHOICES,
+                                      default='M')
     #basic user fields, more probably for later
     #user = models.ForeignKey(User, unique=True)
     #birth_date = models.DateField(null= True)
