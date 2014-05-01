@@ -10,8 +10,11 @@ class Matches(models.Model):
     user2 =models.ForeignKey(User,related_name='matches_user2')
     offering = models.CharField(db_index=True, max_length=40, null=True)
     recieving =models.CharField(db_index=True, max_length=40, null=True)
+    def recieved(self):
+        return self.recieving
     
-    
+    def giving(self):
+        return self.offering
     
     def __unicode__(self):
         return self.user1.username

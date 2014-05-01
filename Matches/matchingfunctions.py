@@ -13,7 +13,8 @@ def match_user(person):
         r=Matches(user1=person)
         for y in Skills.objects.filter(skill__exact= x.wants):
                 r.user2 = y.user
-                r.recieving = y.skill
+                r.offering = y.skill
+                r.recieving =x.desire
                 r.save
         
     
