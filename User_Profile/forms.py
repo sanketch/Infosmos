@@ -12,7 +12,12 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('city','gender',)
+        fields = ('city','gender','desire','Listofskills')
+
+#class UserProileForm(forms.ModelForm):
+#    class Meta:
+#        model= UserProfile
+#        fields = ()
 
 #class SkillsForm(forms.ModelForm):
 

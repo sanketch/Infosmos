@@ -8,58 +8,30 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Skill'
-        db.create_table(u'User_Profile_skill', (
+        # Adding model 'Matches'
+        db.create_table(u'Matches_matches', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('user1', self.gf('django.db.models.fields.related.ForeignKey')(related_name='matches_user1', to=orm['auth.User'])),
+            ('user2', self.gf('django.db.models.fields.related.ForeignKey')(related_name='matches_user2', to=orm['auth.User'])),
+            ('offering', self.gf('django.db.models.fields.CharField')(max_length=40, null=True, db_index=True)),
+            ('recieving', self.gf('django.db.models.fields.CharField')(max_length=40, null=True, db_index=True)),
         ))
-        db.send_create_signal(u'User_Profile', ['Skill'])
-
-        # Adding model 'UserProfile'
-        db.create_table(u'User_Profile_userprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('gender', self.gf('django.db.models.fields.CharField')(default='M', max_length=2, null=True)),
-            ('desire', self.gf('django.db.models.fields.CharField')(max_length=50, null=True)),
-            ('city', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=400, blank=True)),
-        ))
-        db.send_create_signal(u'User_Profile', ['UserProfile'])
-
-        # Adding M2M table for field skills on 'UserProfile'
-        m2m_table_name = db.shorten_name(u'User_Profile_userprofile_skills')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('userprofile', models.ForeignKey(orm[u'User_Profile.userprofile'], null=False)),
-            ('skill', models.ForeignKey(orm[u'User_Profile.skill'], null=False))
-        ))
-        db.create_unique(m2m_table_name, ['userprofile_id', 'skill_id'])
+        db.send_create_signal(u'Matches', ['Matches'])
 
 
     def backwards(self, orm):
-        # Deleting model 'Skill'
-        db.delete_table(u'User_Profile_skill')
-
-        # Deleting model 'UserProfile'
-        db.delete_table(u'User_Profile_userprofile')
-
-        # Removing M2M table for field skills on 'UserProfile'
-        db.delete_table(db.shorten_name(u'User_Profile_userprofile_skills'))
+        # Deleting model 'Matches'
+        db.delete_table(u'Matches_matches')
 
 
     models = {
-        u'User_Profile.skill': {
-            'Meta': {'object_name': 'Skill'},
+        u'Matches.matches': {
+            'Meta': {'object_name': 'Matches'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'User_Profile.userprofile': {
-            'Meta': {'object_name': 'UserProfile'},
-            'city': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '400', 'blank': 'True'}),
-            'desire': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
-            'gender': ('django.db.models.fields.CharField', [], {'default': "'M'", 'max_length': '2', 'null': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'skills': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['User_Profile.Skill']", 'null': 'True', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
+            'offering': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'db_index': 'True'}),
+            'recieving': ('django.db.models.fields.CharField', [], {'max_length': '40', 'null': 'True', 'db_index': 'True'}),
+            'user1': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'matches_user1'", 'to': u"orm['auth.User']"}),
+            'user2': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'matches_user2'", 'to': u"orm['auth.User']"})
         },
         u'auth.group': {
             'Meta': {'object_name': 'Group'},
@@ -99,4 +71,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['User_Profile']
+    complete_apps = ['Matches']

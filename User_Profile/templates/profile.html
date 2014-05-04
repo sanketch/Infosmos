@@ -1,6 +1,6 @@
 {% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
-{% block title %}Infosmos Home Page{% endblock %}
+{% block title %}Edit Profile{% endblock %}
 
 {% block navigator-menu %}
 	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
@@ -13,10 +13,16 @@
 {% block content %}
         <div class="row">
              <div class="large-3 columns">
-                  <h1>Welcome!</h1>
+                  <h1>Your Profile!</h1>
              </div>
              <div class="large-9 columns">
-
+                 {%  for field in form %}
+                    {{ field.error }}
+                 {%  endfor %}
+                  <form action="/profile/" method = "post"> {% csrf_token %}
+                      {{ form.as_p }}
+                      <input type = "submit" value="Update" />
+                  </form>
              </div>
         </div>
 

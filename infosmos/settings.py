@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'User_Profile',
     'contact',
     'Matches',
+    'south',
     #for test
     'django_nose',
 )

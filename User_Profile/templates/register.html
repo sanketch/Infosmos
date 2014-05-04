@@ -46,20 +46,20 @@
 							</div>
 						{% endfor %}
 						
-						{% for field in profile_form %}
-							<div class="row">
-								<div class="large-12 columns">
-									{% if field.errors %}
-									<label class ="error">{{field.html_name}} {{ field}}
-										<small class="error">{{field.html_name}} is Required</small>
-									</label>
-									
-									{% else %}
-									<label>{{field.label}} {{ field}}</label>
-									{% endif %}
-								</div>
-							</div>
-						{% endfor %}					
+{#						{% for field in profile_form %}#}
+{#							<div class="row">#}
+{#								<div class="large-12 columns">#}
+{#									{% if field.errors %}#}
+{#									<label class ="error">{{field.html_name}} {{ field}}#}
+{#										<small class="error">{{field.html_name}} is Required</small>#}
+{#									</label>#}
+{#									#}
+{#									{% else %}#}
+{#									<label>{{field.label}} {{ field}}</label>#}
+{#									{% endif %}#}
+{#								</div>#}
+{#							</div>#}
+{#						{% endfor %}					#}
                         <p></p>
 						<!-- Provide a button to click to submit the form. -->
 						<input class ="button expand" type="submit" name="submit" value="Register" />

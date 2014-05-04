@@ -21,3 +21,4 @@ def contact(request):
 
 def thanks(request):
     return render(request, 'thanks.html')
+

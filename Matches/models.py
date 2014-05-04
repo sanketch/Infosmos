@@ -1,5 +1,5 @@
 from django.db import models
-from User_Profile.models import Skills, Desires, Askill, Adesire,UserProfile
+#from User_Profile.models import Skills, Desires, Askill, Adesire,UserProfile
 from django.contrib.auth.models import User
 # Create your models here.
 

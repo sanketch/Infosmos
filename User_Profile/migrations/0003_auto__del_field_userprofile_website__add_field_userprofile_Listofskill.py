@@ -8,42 +8,23 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Skill'
-        db.create_table(u'User_Profile_skill', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-        ))
-        db.send_create_signal(u'User_Profile', ['Skill'])
+        # Deleting field 'UserProfile.website'
+        db.delete_column(u'User_Profile_userprofile', 'website')
 
-        # Adding model 'UserProfile'
-        db.create_table(u'User_Profile_userprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('gender', self.gf('django.db.models.fields.CharField')(default='M', max_length=2, null=True)),
-            ('desire', self.gf('django.db.models.fields.CharField')(max_length=50, null=True)),
-            ('city', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=400, blank=True)),
-        ))
-        db.send_create_signal(u'User_Profile', ['UserProfile'])
-
-        # Adding M2M table for field skills on 'UserProfile'
-        m2m_table_name = db.shorten_name(u'User_Profile_userprofile_skills')
-        db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('userprofile', models.ForeignKey(orm[u'User_Profile.userprofile'], null=False)),
-            ('skill', models.ForeignKey(orm[u'User_Profile.skill'], null=False))
-        ))
-        db.create_unique(m2m_table_name, ['userprofile_id', 'skill_id'])
+        # Adding field 'UserProfile.Listofskills'
+        db.add_column(u'User_Profile_userprofile', 'Listofskills',
+                      self.gf('django.db.models.fields.CharField')(max_length=900, null=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'Skill'
-        db.delete_table(u'User_Profile_skill')
+        # Adding field 'UserProfile.website'
+        db.add_column(u'User_Profile_userprofile', 'website',
+                      self.gf('django.db.models.fields.CharField')(max_length=80, null=True),
+                      keep_default=False)
 
-        # Deleting model 'UserProfile'
-        db.delete_table(u'User_Profile_userprofile')
-
-        # Removing M2M table for field skills on 'UserProfile'
-        db.delete_table(db.shorten_name(u'User_Profile_userprofile_skills'))
+        # Deleting field 'UserProfile.Listofskills'
+        db.delete_column(u'User_Profile_userprofile', 'Listofskills')
 
 
     models = {
@@ -53,6 +34,7 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'User_Profile.userprofile': {
+            'Listofskills': ('django.db.models.fields.CharField', [], {'max_length': '900', 'null': 'True'}),
             'Meta': {'object_name': 'UserProfile'},
             'city': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '400', 'blank': 'True'}),
             'desire': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
