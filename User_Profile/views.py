@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.core.context_processors import csrf
-from User_Profile.models import Skill
+from User_Profile.models import Skill, Desire
 
 def register(request):
     context = RequestContext(request)
@@ -89,9 +89,9 @@ def user_profile(request):
     context = RequestContext(request)
 
     if request.method == 'POST':
+        ####FOR SKILLS#######
         listofskills = (request.POST['SkillsList']).split(",")
         #take the string and make it into a list
-        #print listofskills
         #iterate through the list and check if the skill in the list is already in the database, if not add it. Then check whether the skill is already added to the user. if not add it.
         for skill in listofskills:
             test = None
@@ -110,6 +110,29 @@ def user_profile(request):
                     newskill = Skill.objects.filter(name=skill.lower())
                     print newskill[0]
                     request.user.profile.skills.add(newskill[0])
+
+        #######FOR DESIRES############
+        listofdesires = (request.POST['DesiresList']).split(",")
+        #take the string and make it into a list
+
+        #iterate through the list and check if the desire in the list is already in the database, if not add it. Then check whether the skill is already added to the user. if not add it.
+        for desire in listofdesires:
+            test = None
+            if not Desire.objects.filter(name=desire.lower()):
+                newdesire = Desire.objects.create(name=desire.lower())
+                request.user.profile.desires.add(newdesire)
+                #print test
+            else:
+                exists = False
+                #print request.user.profile.skills.all()
+                for existingDesire in request.user.profile.desires.all():
+
+                    if existingDesire.name == desire.lower():
+                        exists = True
+                if not exists:
+                    newdesire = Desire.objects.filter(name=desire.lower())
+                    print newdesire[0]
+                    request.user.profile.desires.add(newdesire[0])
 
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
