@@ -10,9 +10,10 @@ import string
 #WARNING: This flushes the database completely
 def randskill():
     "This function returns a random skill from a small list"
-    skillset = ['karate','judo','mandarin','spanish','english','jogging',
-                'welding','writing','painting','drawing','acting','soccer',
-                'programming']
+    skillset = ['karate','judo','mandarin','spanish','english','jogging',]
+            
+    
+    #'welding','writing','painting','drawing','acting','soccer','programming'
     return random.choice(skillset)
 
 def user_gen(size=6, chars=string.ascii_lowercase):
@@ -33,8 +34,14 @@ def populate():
     pig = User.objects.create_user( 'regibald', 'lolc5ats@gmail.com', '0')
     donkey = User.objects.create_user( 'donkey', 'lolca6ts@gmail.com', 'pop')
     human = User.objects.create_user( 'human', 'lolcat7s@gmail.com', 'pa')
-    
-    a = [admin,joyyie,cat,dog,cow,pig,donkey,human]
+    rogan =  User.objects.create_user( 'humsasean', 'lolcat7s@gmail.com', 'psa')
+    jesus =  User.objects.create_user( 'humdean', 'lolcat7s@gmail.com', 'psa')
+    mary =  User.objects.create_user( 'humean', 'lolcat7s@gmail.com', 'psa')
+    joseph =  User.objects.create_user( 'humadsasdan', 'lolcat7s@gmail.com', 'psa')
+    peter =  User.objects.create_user( 'hum4ean', 'lolcat7s@gmail.com', 'pssa')
+    paul =  User.objects.create_user( 'humesan', 'lolcat7s@gmail.com', 'pssa')
+    vei =  User.objects.create_user( 'hdasumean', 'lolcat7s@gmail.com', 'passa')
+    a = [admin,joyyie,cat,dog,cow,pig,donkey,human,rogan,jesus,mary,joseph,peter,paul,vei]
 
     for i in a:
         i.first_name= 'jackee'
@@ -77,7 +84,8 @@ def populate():
         s1.save()
         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
         d1.save()
-        
+        for x in a:
+            match_user(x)
         
 if __name__=='__main__':
     print "starting population script"
@@ -85,6 +93,7 @@ if __name__=='__main__':
     from django.contrib.auth.models import User
     from User_Profile.models import UserProfile, Skills, Desires, Askill, Adesire
     from django.core import management
+    from Matches.matchingfunctions import match_user
     management.call_command('flush', verbosity=0, interactive=False)
     populate()
     print "Population completed."

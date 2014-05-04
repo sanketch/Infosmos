@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'User_Profile',
     'contact',
+    'Matches',
     #for test
     'django_nose',
 )
