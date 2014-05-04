@@ -4,22 +4,13 @@ from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-	
     class Meta:
         model = User
-        fields = ('username','password','first_name','last_name', 'email', )
+        fields = ('username', 'password', 'first_name', 'last_name', 'email', )
+
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('city','gender','desire','Listofskills')
+        fields = ('city', 'gender', 'SkillsList', 'DesiresList', )
 
-#class UserProileForm(forms.ModelForm):
-#    class Meta:
-#        model= UserProfile
-#        fields = ()
-
-#class SkillsForm(forms.ModelForm):
-
-
-		

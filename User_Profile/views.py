@@ -89,7 +89,7 @@ def user_profile(request):
     context = RequestContext(request)
 
     if request.method == 'POST':
-        listofskills = (request.POST['Listofskills']).split(",")
+        listofskills = (request.POST['SkillsList']).split(",")
         #take the string and make it into a list
         #print listofskills
         #iterate through the list and check if the skill in the list is already in the database, if not add it. Then check whether the skill is already added to the user. if not add it.
@@ -110,7 +110,7 @@ def user_profile(request):
                     newskill = Skill.objects.filter(name=skill.lower())
                     print newskill[0]
                     request.user.profile.skills.add(newskill[0])
-                    
+
         form = UserProfileForm(request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
