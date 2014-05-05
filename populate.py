@@ -54,16 +54,28 @@ def populate():
         i.last_login=datetime.datetime.today()
       
         i.save()
-        s = Skills(user=i, skill=randskill(), yearxp=1,description="Yeah bro")
-        s.save()
-        d = Desires(user=i, wants=randskill(), description="Yeah bro")
-        d.save()
         r =UserProfile(user=i,city='Detroit')    
         r.save()
-        s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+        s1 = Skill(name = randskill())
         s1.save()
-        d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+        s2 = Skill(name = randskill())
+        s2.save()
+        r.skills.add(s1,s2)
+        d1 = Desire(name = randskill())
         d1.save()
+        d2 = Desire(name = randskill())
+        d2.save()
+        r.desires.add( d1,d2)
+#         s = Skills(user=i, skill=randskill(), yearxp=1,description="Yeah bro")
+#         s.save()
+#         d = Desires(user=i, wants=randskill(), description="Yeah bro")
+#         d.save()
+#         r =UserProfile(user=i,city='Detroit')    
+#         r.save()
+#         s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+#         s1.save()
+#         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+#         d1.save()
         
         
     ranger = int(raw_input('How many users do you want'))
@@ -74,26 +86,38 @@ def populate():
         x.is_superuser=True
         x.is_staff=False
         x.save()
-        s = Skills(user=x, skill=randskill(), yearxp=1,description="Yeah bro")
-        s.save()
-        d = Desires(user=x, wants=randskill(), description="Yeah bro")
-        d.save()
         r =UserProfile(user=x,city='Detroit')    
         r.save()
-        s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+        s1 = Skill(name = randskill())
         s1.save()
-        d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+        s2 = Skill(name = randskill())
+        s2.save()
+        r.skills.add(s1,s2)
+        d1 = Desire(name = randskill())
         d1.save()
+        d2 = Desire(name = randskill())
+        d2.save()
+        r.desires.add( d1,d2)
+#         s = Skills(user=x, skill=randskill(), yearxp=1,description="Yeah bro")
+#         s.save()
+#         d = Desires(user=x, wants=randskill(), description="Yeah bro")
+#         d.save()
+#         r =UserProfile(user=x,city='Detroit')    
+#         r.save()
+#         s1 = Askill(skill=s,userprofile=r,date_created=datetime.date(1999,8,2))
+#         s1.save()
+#         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
+#         d1.save()
         for x in a:
-            match_user(x)
+            match_user_profile(x)
         
 if __name__=='__main__':
     print "starting population script"
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'infosmos.settings')
     from django.contrib.auth.models import User
-    from User_Profile.models import UserProfile, Skills, Desires, Askill, Adesire
+    from User_Profile.models import UserProfile, Skill, Desire
     from django.core import management
-    from Matches.matchingfunctions import match_user
+    from Matches.matchingfunctions import match_user_profile
     management.call_command('flush', verbosity=0, interactive=False)
     populate()
     print "Population completed."
