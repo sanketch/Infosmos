@@ -7,13 +7,13 @@ notifications:
    - sanke93@gmail.com
 
 # for test coverage
-before_script: mkdir -p shippable/testresults
-script:
-  - nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+#before_script: mkdir -p shippable/testresults
+#script:
+ # - nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 
  # for code coverage
 
-before_script: mkdir -p shippable/codecoverage
-script:
-  - coverage run --branch python/sample.py
-  - coverage xml -o shippable/codecoverage/coverage.xml python/sample.py
+#before_script: mkdir -p shippable/codecoverage
+#script:
+ # - coverage run --branch python/sample.py
+ # - coverage xml -o shippable/codecoverage/coverage.xml python/sample.py
