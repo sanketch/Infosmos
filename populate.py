@@ -66,6 +66,7 @@ def populate():
         d2 = Desire(name = randskill())
         d2.save()
         r.desires.add( d1,d2)
+        r.save()
 #         s = Skills(user=i, skill=randskill(), yearxp=1,description="Yeah bro")
 #         s.save()
 #         d = Desires(user=i, wants=randskill(), description="Yeah bro")
@@ -98,6 +99,7 @@ def populate():
         d2 = Desire(name = randskill())
         d2.save()
         r.desires.add( d1,d2)
+        r.save()
 #         s = Skills(user=x, skill=randskill(), yearxp=1,description="Yeah bro")
 #         s.save()
 #         d = Desires(user=x, wants=randskill(), description="Yeah bro")
@@ -108,8 +110,8 @@ def populate():
 #         s1.save()
 #         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
 #         d1.save()
-        for x in a:
-            match_user_profile(x)
+#     for x in a:
+#         match_user_profile(x)
         
 if __name__=='__main__':
     print "starting population script"

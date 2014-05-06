@@ -1,0 +1,27 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %} <!--loads the static folder containing css and images -->
+{% block title %}Matches{% endblock %}
+{% load url from future %}
+{% block navigator-menu %}
+	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
+	<li><a href="../dashboard/"><b>DashBoard</b></a></li>
+	<li><a href="#"><b>Matches</b></a></li>
+	<li><a href="../profile/"><b>Profile</b></a></li>
+	<li><a href="../logout/"><b>Logout</b></a></li>
+{% endblock %}
+{% block content %}
+	<table>
+	    <tr>
+	        <th>Match</th>
+	        <th>Teaching</th>
+	        <th>Learning</th>
+	    </tr>
+	    {% for item in matches %}
+	    <tr> 
+	        <td><a href="{% url 'User_Profile.views.buddy' %}?user={{item.user2}}">{{ item.user2 }}</a></td>
+	        <td>{{ item.offering }}</td>
+	        <td>{{ item.recieving }}</td>
+	    </tr>
+	    {% endfor %}
+</table>
+{% endblock %}

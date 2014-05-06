@@ -29,15 +29,20 @@ def match_user_profile(person):
     #New and improved matching function
     matchee = UserProfile.objects.get(user=person)
     for x in matchee.desires.all():
-        for y in UserProfile.objects.filter(skills=x):
+#         print x
+        for y in UserProfile.objects.all():
+
             for z in y.desires.all():
                 for ab in matchee.skills.all():
-                    if z == ab:
+                    if (z.name == ab.name and y.user!=person):
                         r =Matches(user1=person)
                         r.user2=y.user
-                        r.offering=ab
-                        r.recieving=x
+                        r.offering=ab.name
+                        r.recieving=x.name
                         r.save()
+#                     else:
+#                         print z.name
+#                         print ab.name
                         
 
         

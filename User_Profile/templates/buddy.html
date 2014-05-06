@@ -1,30 +1,36 @@
 {% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
-{% block title %}Edit Profile{% endblock %}
-
+{% block title %}Infosmos Home Page{% endblock %}
+{% load url from future %}
 {% block navigator-menu %}
 	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
-	<li><a href="../dashboard/"><b>Dashboard</b></a></li>
+	<li><a href="#"><b>Dashboard</b></a></li>
 	<li><a href="../matches/"><b>Matches</b></a></li>
 	<li><a href="../profile/"><b>Profile</b></a></li>
 	<li><a href="../logout/"><b>Logout</b></a></li>
 {% endblock %}
-
 {% block content %}
         <div class="row">
              <div class="large-3 columns">
-                  <h1>Your Profile!</h1>
+                  <h1>Information on your buddy</h1>
              </div>
              <div class="large-9 columns">
-                 {%  for field in form %}
-                    {{ field.error }}
-                 {%  endfor %}
-                  <form action="/profile/" method = "post"> {% csrf_token %}
-                      {{ form.as_p }}
-                      <input type = "submit" value="Update" />
-                  </form>
-                  <p>For Desires and Skills, separate each entry by a comma</p>
+                <h2>User Name</h2>
+				{{ user2.user.username }}
+				<h2> Gender </h2>
+				{{ user2.gender }}
+				<h2>Location</h2>
+				{{ user2.city }}
+				<h2>Skills List</h2>
+				{{ user2.SkillsList }}
+				<h2>Desires List</h2>
+				 {{ user2.DesiresList }}
+				<h2>Email</h2>
+				{{ user2.user.email }}
              </div>
         </div>
+        <div>
+  		  
+</div>
 
 {% endblock %}
