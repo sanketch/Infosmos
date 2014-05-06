@@ -24,13 +24,14 @@
                 {% csrf_token %}
                 <a onclick="F.connect(this.parentNode); return false;" href="javascript:void(0);">Connect your profile with Facebook!</a>
             </form>
+             <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">
+      		<input type="submit" value="Match Me!" id="toggle1" />
+      		{% csrf_token %}
+            </form>
              </div>
         </div>
         <div>
-  		  <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">
-      		<input type="submit" value="Match Me!" id="toggle1" />
-      		{% csrf_token %}
-  </form>
+
 </div>
 
 {% endblock %}
