@@ -19,8 +19,6 @@ class Desire(models.Model):
 class UserProfile(models.Model):
     #This is a start of the user profile page
     user = models.OneToOneField(User)
-    #facebook = models.URLField(blank=True)
-    #picture = models.ImageField(upload_to='profile_images', blank=True)
     SkillsList = models.CharField( max_length=900, null=True, blank=True)
     DesiresList = models.CharField( max_length=900, null=True, blank=True)
     GENDER_CHOICES = (
@@ -31,12 +29,14 @@ class UserProfile(models.Model):
                                       choices=GENDER_CHOICES,
                                       default='M', null=True)
     desires = models.ManyToManyField(Desire, blank=True, null=True)
+    skills = models.ManyToManyField(Skill, blank=True, null=True)
+    city = models.CharField(db_index=True, max_length=400, blank=True)
+    #facebook = models.URLField(blank=True)
+    #picture = models.ImageField(upload_to='profile_images', blank=True)
     #basic user fields, more probably for later
     #user = models.ForeignKey(User, unique=True)
     #birth_date = models.DateField(null= True)
-    skills = models.ManyToManyField(Skill, blank=True, null=True)
-    #desires = models.ManyToManyField(Desires,through='Adesire')
-    city = models.CharField(db_index=True, max_length=400, blank=True)
+
     def __unicode__(self):
         return "%s (%s)" % (self.user.username, ",".join([skill.name for skill in self.skills.all()]))
 

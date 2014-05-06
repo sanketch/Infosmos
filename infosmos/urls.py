@@ -14,11 +14,13 @@ urlpatterns = patterns('',
     url(r'^buddy/$', views.buddy, name='buddy'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^dashboard/$', views.user_dashboard, name='dashboard'),
-   
+    url(r'^accounts/signup/$', include('User_Profile.urls'), name='register'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^contact/$', 'contact.views.contact', name='contact'),
     url(r'^thanks/$', 'contact.views.thanks', name='thankyou'),
     url(r'^profile/$', views.user_profile, name='profile'),
+    url(r'^accounts/profile/$', views.user_profile, name='profile'),
 
     url(r'^accounts/', include('allauth.urls')),
     #url(r'^accounts/', include('django_facebook.auth_urls')), #Don't add this line if you use django registration or userena for registration and auth.
