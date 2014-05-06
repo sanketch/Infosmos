@@ -8,8 +8,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', home_index, name = 'home_index'),
-     url(r'^matches/$', 'Matches.views.matches', name='dashboard'),
+    url(r'^matches/$', 'Matches.views.matches', name='dashboard'),
+    
     url(r'^register/$', include('User_Profile.urls'), name='register'),
+    url(r'^buddy/$', views.buddy, name='buddy'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^dashboard/$', views.user_dashboard, name='dashboard'),
    
