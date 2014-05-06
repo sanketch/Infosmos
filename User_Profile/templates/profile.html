@@ -27,7 +27,9 @@
                      {{ request.user.email }}
                      <p>Account Status: {% if not request.user.profile.account_verified %} Unverified {% else %} Verified {% endif %}</p>
                      {% if not user.socialaccount_set.all.0.uid %}<p><a href="{% provider_login_url "facebook" process="connect" %}">Connect a Facebook account</a></p>
-                       {% endif %}
+                     {% else %} <p>Account connected to {{ user.socialaccount_set.all.0.provider }}</p>
+                     {% endif %}
+
 
              </div>
              <div class="large-9 columns">
