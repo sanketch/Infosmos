@@ -75,8 +75,17 @@ def user_login(request):
 
 @login_required
 def user_dashboard(request):
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
+    c={}
+    c.update(csrf(request))
     context = RequestContext(request)
-    return render_to_response('dashboard.html', {}, context)
+    if request.method =='POST':
+        from Matches.models import *
+        from Matches.matchingfunctions import match_user_profile
+        match_user_profile(user)
+    return render_to_response('dashboard.html', c, context)
 
 @login_required
 def user_logout(request):

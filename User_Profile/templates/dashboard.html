@@ -1,7 +1,7 @@
 {% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Infosmos Home Page{% endblock %}
-
+{% load url from future %}
 {% block navigator-menu %}
 	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
 	<li><a href="#"><b>Dashboard</b></a></li>
@@ -19,5 +19,11 @@
 
              </div>
         </div>
+        <div>
+  		  <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">
+      		<input type="submit" value="Match Me!" id="toggle1" />
+      		{% csrf_token %}
+  </form>
+</div>
 
 {% endblock %}
