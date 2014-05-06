@@ -1,8 +1,15 @@
 from django.shortcuts import render
-from User_Profile.models import Skills, Desires, Askill, Adesire,UserProfile
-from Matches.models import Match
-from django.http import HttpResponse
-from django.template import RequestContext
+from User_Profile.models import Skill, Desire, UserProfile
+from Matches.models import Matches
+from django.http import HttpResponse,HttpResponseRedirect
+from django.template import RequestContext, Context, loader
+from django.shortcuts import render_to_response
+from User_Profile.forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.core.context_processors import csrf
+from User_Profile.models import Skill, Desire
 # Create your views here.
 
 def match(request):
@@ -11,14 +18,12 @@ def match(request):
     
     if request.method == 'POST':
         match 
- 
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user = user_form.save()
-#             user.set_password(user.password)
-#             user.save()
-#             profile = profile_form.save(commit=False)
-#             profile.user = user
-#  
-#  
-#             profile.save()
-#             registered = True
+        
+@login_required
+def matches(request):
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
+    matches = Matches.objects.filter(user1=user)
+
+    return render_to_response('matches.html', {'matches':matches})
