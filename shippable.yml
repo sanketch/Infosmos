@@ -2,7 +2,7 @@ mkdir -p shippable/testresuts
 python:
     - "2.7"
 language: python
-install: pip install --use-mirrors -r requirements.txt
+install: pip install Django==1.6.2 virtualenv==1.11.4 South 
 notifications:
   email:
    - sanke93@gmail.com
