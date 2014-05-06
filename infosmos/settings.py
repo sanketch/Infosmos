@@ -84,9 +84,14 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.linkedin',
 
     'django_messages',
+    'chat',
     #for test
     'django_nose',
 )
+
+
+
+
 
 SITE_ID = 2
 
