@@ -10,18 +10,26 @@
 	<li><a href="../logout/"><b>Logout</b></a></li>
 {% endblock %}
 {% block content %}
-	<table>
+    <div class="row">
+             <div class="large-3 columns">
+                  <h1>Your Matches!</h1>
+             </div>
+             <div class="large-9 columns">
+             <br /><br />
+                 <table>
 	    <tr>
 	        <th>Match</th>
 	        <th>Teaching</th>
 	        <th>Learning</th>
 	    </tr>
 	    {% for item in matches %}
-	    <tr> 
+	    <tr>
 	        <td><a href="{% url 'User_Profile.views.buddy' %}?user={{item.user2}}">{{ item.user2 }}</a></td>
 	        <td>{{ item.offering }}</td>
 	        <td>{{ item.recieving }}</td>
 	    </tr>
 	    {% endfor %}
 </table>
+             </div>
+</div>
 {% endblock %}
