@@ -1,0 +1,36 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %} <!--loads the static folder containing css and images -->
+{% block title %}Infosmos Home Page{% endblock %}
+{% load url from future %}
+{% block navigator-menu %}
+	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
+	<li><a href="#"><b>Dashboard</b></a></li>
+	<li><a href="../matches/"><b>Matches</b></a></li>
+	<li><a href="../profile/"><b>Profile</b></a></li>
+	<li><a href="../logout/"><b>Logout</b></a></li>
+{% endblock %}
+{% block content %}
+        <div class="row">
+             <div class="large-3 columns">
+                  <h1>Information on your buddy</h1>
+             </div>
+             <div class="large-9 columns">
+                <h2>User Name</h2>
+				{{ user2.user.username }}
+				<h2> Gender </h2>
+				{{ user2.gender }}
+				<h2>Location</h2>
+				{{ user2.city }}
+				<h2>Skills List</h2>
+				{{ user2.SkillsList }}
+				<h2>Desires List</h2>
+				 {{ user2.DesiresList }}
+				<h2>Email</h2>
+				{{ user2.user.email }}
+             </div>
+        </div>
+        <div>
+  		  
+</div>
+
+{% endblock %}

@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.core.context_processors import csrf
-from User_Profile.models import Skill, Desire
+from User_Profile.models import Skill, Desire, UserProfile
 
 def register(request):
     context = RequestContext(request)
@@ -86,6 +86,16 @@ def user_dashboard(request):
         from Matches.matchingfunctions import match_user_profile
         match_user_profile(user)
     return render_to_response('dashboard.html', c, context)
+
+@login_required
+def buddy(request):
+    context =RequestContext(request)
+    user1 = None
+    user2 = request.GET.get('user')
+    if request.user.is_authenticated():
+        user1 = request.user
+    userp = UserProfile.objects.get(user__username=user2)
+    return render_to_response('buddy.html',{'user2':userp},context)
 
 @login_required
 def user_logout(request):

@@ -110,8 +110,8 @@ def populate():
 #         s1.save()
 #         d1 = Adesire(desire=d,userprofile=r,date_created=datetime.date(1999,8,2))
 #         d1.save()
-    for x in a:
-        match_user_profile(x)
+#     for x in a:
+#         match_user_profile(x)
         
 if __name__=='__main__':
     print "starting population script"

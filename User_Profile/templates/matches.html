@@ -18,7 +18,7 @@
 	    </tr>
 	    {% for item in matches %}
 	    <tr> 
-	        <td>{{ item.user2 }}</td>
+	        <td><a href="{% url 'User_Profile.views.buddy' %}?user={{item.user2}}">{{ item.user2 }}</a></td>
 	        <td>{{ item.offering }}</td>
 	        <td>{{ item.recieving }}</td>
 	    </tr>
