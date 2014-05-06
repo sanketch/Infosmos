@@ -1,7 +1,7 @@
 {% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Edit Profile{% endblock %}
-
+{% load socialaccount %}
 {% load url from future %}
 
 {% block navigator-menu %}
@@ -26,6 +26,8 @@
                      {% endif %}
                      {{ request.user.email }}
                      <p>Account Status: {% if not request.user.profile.account_verified %} Unverified {% else %} Verified {% endif %}</p>
+                     {% if not user.socialaccount_set.all.0.uid %}<p><a href="{% provider_login_url "facebook" process="connect" %}">Connect a Facebook account</a></p>
+                       {% endif %}
 
              </div>
              <div class="large-9 columns">

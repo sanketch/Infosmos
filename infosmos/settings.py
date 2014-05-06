@@ -163,3 +163,13 @@ EMAIL_HOST_USER = 'sbchauhan@connect.ust.hk'
 EMAIL_HOST_PASSWORD = 'U3RhGyugpH_IOf-MJrmFuQ'
 DEFAULT_FROM_EMAIL = 'sanke93@gmail.com'
 EMAIL_PORT = 587
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'linkedin':
+      {'SCOPE': ['r_emailaddress'],
+       'PROFILE_FIELDS': ['id',
+                         'first-name',
+                         'last-name',
+                         'email-address',
+                         'picture-url',
+                         'public-profile-url']}}
