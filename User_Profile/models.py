@@ -32,7 +32,6 @@ class UserProfile(models.Model):
     #basic user fields, more probably for later
     #user = models.ForeignKey(User, unique=True)
     #birth_date = models.DateField(null= True)
-    #location = models.CharField(max_length=150, null=True)
     skills = models.ManyToManyField(Skill, blank=True, null=True)
     #desires = models.ManyToManyField(Desires,through='Adesire')
     city = models.CharField(db_index=True, max_length=400, blank=True)

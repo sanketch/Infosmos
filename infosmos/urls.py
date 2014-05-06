@@ -15,6 +15,9 @@ urlpatterns = patterns('',
     url(r'^contact/$', 'contact.views.contact', name='contact'),
     url(r'^thanks/$', 'contact.views.thanks', name='thankyou'),
     url(r'^profile/$', views.user_profile, name='profile'),
+
+    url(r'^facebook/', include('django_facebook.urls')),
+    url(r'^accounts/', include('django_facebook.auth_urls')), #Don't add this line if you use django registration or userena for registration and auth.
     #home page
     # Examples:
     # url(r'^$', 'infosmos.views.home', name='home'),

@@ -26,6 +26,21 @@ SECRET_KEY = '+81jy98j4^tx#0eq+)hd97gi+_yjf(0d0ntq%)r#+d3h)t0+ay'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'django_facebook.context_processors.facebook',
+)
+
+FACEBOOK_APP_ID = '617832874969588'
+FACEBOOK_APP_SECRET = '05d7ce4bf66a6dc57ed3bd479e9256d9'
+
 TEMPLATE_DEBUG = True
 
 TEMPLATE_DIRS = (
@@ -51,6 +66,7 @@ INSTALLED_APPS = (
     'contact',
     'Matches',
     'south',
+    'django_facebook',
     #for test
     'django_nose',
 )
@@ -62,6 +78,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'django_facebook.auth_backends.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'infosmos.urls'
