@@ -13,7 +13,23 @@
 {% endblock %}
 
 {% block content %}
+        <script>
+              window.fbAsyncInit = function() {
+                FB.init({
+                  appId      : '617832874969588',
+                  xfbml      : true,
+                  version    : 'v2.0'
+                });
+              };
 
+              (function(d, s, id){
+                 var js, fjs = d.getElementsByTagName(s)[0];
+                 if (d.getElementById(id)) {return;}
+                 js = d.createElement(s); js.id = id;
+                 js.src = "//connect.facebook.net/en_US/sdk.js";
+                 fjs.parentNode.insertBefore(js, fjs);
+               }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div class="row">
              <div class="large-3 columns">
                   <h1>Your Profile!</h1>
@@ -29,6 +45,7 @@
                      {% if not user.socialaccount_set.all.0.uid %}<p><a href="{% provider_login_url "facebook" process="connect" %}">Connect a Facebook account</a></p>
                      {% else %} <p>Account connected to {{ user.socialaccount_set.all.0.provider }}</p>
                      {% endif %}
+                    <div class="fb-share-button" data-href="https://infosmos.pythonanywhere.com/" data-width="400" data-type="button"></div>
 
 
              </div>
@@ -43,5 +60,7 @@
                   <p>For Desires and Skills, separate each entry by a comma</p>
              </div>
         </div>
+
+
 
 {% endblock %}
