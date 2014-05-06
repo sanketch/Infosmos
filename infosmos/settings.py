@@ -26,6 +26,13 @@ SECRET_KEY = '+81jy98j4^tx#0eq+)hd97gi+_yjf(0d0ntq%)r#+d3h)t0+ay'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend"
+)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
@@ -35,7 +42,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'django_facebook.context_processors.facebook',
+    "django.contrib.auth.context_processors.auth",
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 )
 
 FACEBOOK_APP_ID = '617832874969588'
@@ -62,13 +71,22 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'User_Profile',
     'contact',
     'Matches',
     'south',
+    #for social
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.linkedin',
     #for test
     'django_nose',
 )
+
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^thanks/$', 'contact.views.thanks', name='thankyou'),
     url(r'^profile/$', views.user_profile, name='profile'),
 
-
+    url(r'^accounts/', include('allauth.urls')),
     #url(r'^accounts/', include('django_facebook.auth_urls')), #Don't add this line if you use django registration or userena for registration and auth.
     #home page
     # Examples:
