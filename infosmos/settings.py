@@ -47,8 +47,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "allauth.socialaccount.context_processors.socialaccount",
 )
 
-FACEBOOK_APP_ID = '617832874969588'
-FACEBOOK_APP_SECRET = '05d7ce4bf66a6dc57ed3bd479e9256d9'
+#FACEBOOK_APP_ID = '617832874969588'
+#FACEBOOK_APP_SECRET = '05d7ce4bf66a6dc57ed3bd479e9256d9'
 
 TEMPLATE_DEBUG = True
 
@@ -86,7 +86,7 @@ INSTALLED_APPS = (
     'django_nose',
 )
 
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
