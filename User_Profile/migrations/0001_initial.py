@@ -15,15 +15,32 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'User_Profile', ['Skill'])
 
+        # Adding model 'Desire'
+        db.create_table(u'User_Profile_desire', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+        ))
+        db.send_create_signal(u'User_Profile', ['Desire'])
+
         # Adding model 'UserProfile'
         db.create_table(u'User_Profile_userprofile', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
+            ('SkillsList', self.gf('django.db.models.fields.CharField')(max_length=900, null=True, blank=True)),
+            ('DesiresList', self.gf('django.db.models.fields.CharField')(max_length=900, null=True, blank=True)),
             ('gender', self.gf('django.db.models.fields.CharField')(default='M', max_length=2, null=True)),
-            ('desire', self.gf('django.db.models.fields.CharField')(max_length=50, null=True)),
             ('city', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=400, blank=True)),
         ))
         db.send_create_signal(u'User_Profile', ['UserProfile'])
+
+        # Adding M2M table for field desires on 'UserProfile'
+        m2m_table_name = db.shorten_name(u'User_Profile_userprofile_desires')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('userprofile', models.ForeignKey(orm[u'User_Profile.userprofile'], null=False)),
+            ('desire', models.ForeignKey(orm[u'User_Profile.desire'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['userprofile_id', 'desire_id'])
 
         # Adding M2M table for field skills on 'UserProfile'
         m2m_table_name = db.shorten_name(u'User_Profile_userprofile_skills')
@@ -39,23 +56,36 @@ class Migration(SchemaMigration):
         # Deleting model 'Skill'
         db.delete_table(u'User_Profile_skill')
 
+        # Deleting model 'Desire'
+        db.delete_table(u'User_Profile_desire')
+
         # Deleting model 'UserProfile'
         db.delete_table(u'User_Profile_userprofile')
+
+        # Removing M2M table for field desires on 'UserProfile'
+        db.delete_table(db.shorten_name(u'User_Profile_userprofile_desires'))
 
         # Removing M2M table for field skills on 'UserProfile'
         db.delete_table(db.shorten_name(u'User_Profile_userprofile_skills'))
 
 
     models = {
+        u'User_Profile.desire': {
+            'Meta': {'object_name': 'Desire'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+        },
         u'User_Profile.skill': {
             'Meta': {'object_name': 'Skill'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'User_Profile.userprofile': {
+            'DesiresList': ('django.db.models.fields.CharField', [], {'max_length': '900', 'null': 'True', 'blank': 'True'}),
             'Meta': {'object_name': 'UserProfile'},
+            'SkillsList': ('django.db.models.fields.CharField', [], {'max_length': '900', 'null': 'True', 'blank': 'True'}),
             'city': ('django.db.models.fields.CharField', [], {'db_index': 'True', 'max_length': '400', 'blank': 'True'}),
-            'desire': ('django.db.models.fields.CharField', [], {'max_length': '50', 'null': 'True'}),
+            'desires': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['User_Profile.Desire']", 'null': 'True', 'blank': 'True'}),
             'gender': ('django.db.models.fields.CharField', [], {'default': "'M'", 'max_length': '2', 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'skills': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['User_Profile.Skill']", 'null': 'True', 'blank': 'True'}),

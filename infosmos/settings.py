@@ -66,7 +66,6 @@ INSTALLED_APPS = (
     'contact',
     'Matches',
     'south',
-    'django_facebook',
     #for test
     'django_nose',
 )
@@ -80,14 +79,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'django_facebook.auth_backends.FacebookBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
+
 
 ROOT_URLCONF = 'infosmos.urls'
 
 WSGI_APPLICATION = 'infosmos.wsgi.application'
+
 
 
 

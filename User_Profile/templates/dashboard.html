@@ -19,11 +19,7 @@
                  <br /><br /><br /><br />
                  <p>Next Steps!</p>
                  <p><a href="../profile/">Update Profile ></a></p>
-            <form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
-                <input type="hidden" value="1" name="connect" />
-                {% csrf_token %}
-                <a onclick="F.connect(this.parentNode); return false;" href="javascript:void(0);">Connect your profile with Facebook!</a>
-            </form>
+
              <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">
       		<input type="submit" value="Match Me!" id="toggle1" />
       		{% csrf_token %}

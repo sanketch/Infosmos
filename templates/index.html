@@ -42,13 +42,7 @@
 {#								 <input type = "password" placeholder = "Password" />#}
 								 <a href="register/" class="expand radius button"><strong>Sign Up</strong></a><br/>
 								 <a href="login/" class="expand radius button alert"><strong>Sign In</strong></a><br/>
-                                    <form action="{% url 'facebook_connect' %}?facebook_login=1" method="post">
-                                        <input type="hidden" value="{{ request.path }}" name="next" />
-                                        <input type="hidden" value="{{ request.path }}" name="register_next" />
-                                        <input type="hidden" value="{{ request.path }}" name="error_next" />
-                                        {% csrf_token %}
-                                        <input onclick="F.connect(this.parentNode); return false;" type="image" src="{{ STATIC_URL }}django_facebook/images/facebook_login.png" align="center" />
-                                    </form>
+
 				<div>
 
             </div>
