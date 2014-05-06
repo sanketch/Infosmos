@@ -106,7 +106,8 @@ def user_logout(request):
 @login_required
 def user_profile(request):
     context = RequestContext(request)
-
+    if request.user.is_authenticated():
+        user = request.user
     if request.method == 'POST':
         ####FOR SKILLS#######
         listofskills = (request.POST['SkillsList']).split(",")
@@ -165,4 +166,4 @@ def user_profile(request):
     args.update(csrf(request))
     args['form'] = form
 
-    return render_to_response('profile.html', args)
+    return render_to_response('profile.html', args, context)

@@ -11,13 +11,17 @@
 {% endblock %}
 
 {% block content %}
+
         <div class="row">
              <div class="large-3 columns">
                   <h1>Welcome!</h1>
+                 <img src="{{ request.user.profile.profile_image_url }}"/>
              </div>
              <div class="large-9 columns">
                  <br /><br /><br /><br />
+                  {% if not request.user.profile.account_verified %} (unverified user! Please verify!) {% endif %}
                  <p>Next Steps!</p>
+
                  <p><a href="../profile/">Update Profile ></a></p>
 
              <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">

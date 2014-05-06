@@ -2,6 +2,8 @@
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Edit Profile{% endblock %}
 
+{% load url from future %}
+
 {% block navigator-menu %}
 	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
 	<li><a href="../../dashboard/"><b>Dashboard</b></a></li>
@@ -11,9 +13,12 @@
 {% endblock %}
 
 {% block content %}
+
         <div class="row">
              <div class="large-3 columns">
                   <h1>Your Profile!</h1>
+                     <img src="{{ request.user.profile.profile_image_url }}"/>
+
              </div>
              <div class="large-9 columns">
                  {%  for field in form %}
