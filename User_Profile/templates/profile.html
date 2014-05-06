@@ -18,7 +18,34 @@
                 FB.init({
                   appId      : '617832874969588',
                   xfbml      : true,
-                  version    : 'v2.0'
+                  version    : 'v2.0',
+                  status     : true
+                });
+                  var temp;
+                FB.getLoginStatus(function(response) {
+                    if (response.authResponse) {
+                        //console.log('Access Token: ' + response.authResponse.accessToken);
+                        temp=response.authResponse.accessToken;
+                        console.log("hi "+temp);
+                        FB.api('/me?access_token={{ temp }}', function (me) {
+                            console.log(me); //do anything with me
+                        });
+                        FB.api('/me/friends', {access_token:temp}, function(response){
+
+                                              var divTarget=document.getElementById("friends-list-container");
+                                              var data=response.data;
+                                              alert(response.error)
+                                              for (var friendIndex=0; friendIndex<data.length; friendIndex++)
+                                            {
+                                                   var divContainer = document.createElement("div");
+                                                   divContainer.innerHTML="<b>" + data[friendIndex].name + "</b>";
+                                                   divTarget.appendChild(divContainer);
+                                            }
+                        });
+                    }
+                    else {
+                        console.log('User cancelled login or did not fully authorize.');
+                    }
                 });
               };
 
@@ -46,7 +73,8 @@
                      {% else %} <p>Account connected to {{ user.socialaccount_set.all.0.provider }}</p>
                      {% endif %}
                     <div class="fb-share-button" data-href="https://infosmos.pythonanywhere.com/" data-width="400" data-type="button"></div>
-
+                    <div id="fb-root"></div>
+                    <section id="friends-list-container"></section>
 
              </div>
              <div class="large-9 columns">
