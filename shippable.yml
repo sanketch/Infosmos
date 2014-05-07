@@ -2,14 +2,8 @@
 python:
     - "2.7"
 language: python
-before_script: mkdir -p shippable/codecoverage shippable/testresults
-install: pip install Django==1.6.2 virtualenv==1.11.4 South django_messages django-allauth django-nose coverage --use-mirrors -r requirements.txt
-
-script:
-  - nosetests User_Profile/models.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  - coverage run --branch User_Profile/models.py
-  - coverage xml -o shippable/codecoverage/coverage.xml User_Profile/sample.py
-
+#before_script: mkdir -p shippable/codecoverage shippable/testresults
+install: pip install Django==1.6.2 virtualenv==1.11.4 South django_messages django-allauth django-nose coverage 
 
 notifications:
   email:
