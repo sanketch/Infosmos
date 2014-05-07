@@ -1,4 +1,4 @@
-mkdir -p shippable/testresuts
+#mkdir -p shippable/testresuts
 python:
     - "2.7"
 language: python
@@ -7,7 +7,7 @@ notifications:
   email:
    - sanke93@gmail.com
 
-   - nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+   #- nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 
  # for code coverage
 
