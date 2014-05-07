@@ -6,9 +6,9 @@ language: python
 install: pip install Django==1.6.2 virtualenv==1.11.4 South django_messages django-allauth django-nose coverage 
 
 
-   #- nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+#- nosetests python/sample.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 
- # for code coverage
+# for code coverage
 
 #before_script: mkdir -p shippable/codecoverage
 #script:
