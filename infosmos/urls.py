@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^matches/$', 'Matches.views.matches', name='matches'),
 
     url(r'^messages/', include('django_messages.urls'), name='messages'),
-
+    url(r'^chat', include('jqchat.urls')),
     url(r'^register/$', include('User_Profile.urls'), name='register'),
     url(r'^buddy/$', views.buddy, name='buddy'),
     url(r'^login/$', views.user_login, name='login'),
