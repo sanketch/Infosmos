@@ -1,0 +1,27 @@
+{% extends "../templates/base.html" %} <!-- inherits from base.html which contains css -->
+{% load static %}
+{% load i18n %}
+
+{% block title %}Review!{% endblock %}
+{% block navigator-menu %}
+	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
+	<li><a href="#"><b>Dashboard</b></a></li>
+	<li><a href="../matches/"><b>Matches</b></a></li>
+	<li><a href="../profile/"><b>Profile</b></a></li>
+	<li><a href="../logout/"><b>Logout</b></a></li>
+{% endblock %}
+{% block content %}
+    <div class="row">
+    <div class="large-3 columns">
+                  <h1>{% trans "Add Review" %}</h1>
+    </div>
+    <div class="large-9 columns">
+
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="{% trans "Save" %}" />
+    </form>
+    </div>
+    </div>
+{% endblock %}

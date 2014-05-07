@@ -84,8 +84,9 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.linkedin',
 
     'django_messages',
-    'chat',
+    'review',
     'jqchat',
+    'hvad',
     #for test
     'django_nose',
 )

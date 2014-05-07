@@ -2,6 +2,7 @@
 {% load static %} <!--loads the static folder containing css and images -->
 {% block title %}Infosmos Home Page{% endblock %}
 {% load url from future %}
+{% load review_tags %}
 {% block navigator-menu %}
 	<li><a href="#" ><b>Welcome {{ user.username}}</b></a></li>
 	<li><a href="#"><b>Dashboard</b></a></li>
@@ -15,7 +16,11 @@
                   <h1>Information on your buddy</h1>
                   <img src="{{ user2.user.profile.profile_image_url }}"/>
                  </br></br>
-                  <p><a href="../messages/compose/{{ user2.user.username }}" class="expand radius button alert"><strong>Send a Message!</strong></a></p>
+                  <a href="../messages/compose/{{ user2.user.username }}" class="expand radius button alert"><strong>Send a Message!</strong></a>
+                  <a href="{% url "review_create" content_type='user' object_id=user2.user.pk %}" class="expand radius button">Feedback!</a>
+{#                 {{ user2.user.id }}#}
+                 {% get_review_count user2.user as review_count %}
+                 <p>This user has received {{ review_count }} reviews</p>
              </div>
              <div class="large-9 columns">
                 <h2>User Name</h2>
