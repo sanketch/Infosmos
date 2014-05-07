@@ -17,3 +17,18 @@
 }
 
 
+.facebook{
+	background-color: #3b5998;
+}
+
+.facebook:hover{
+	background-color: #1b3978;
+}
+
+.linkedin{
+	background-color: #0e76a8;
+}
+
+.linkedin:hover{
+	background-color: #005688;
+}
