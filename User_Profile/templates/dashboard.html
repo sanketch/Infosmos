@@ -20,13 +20,15 @@
              </div>
              <div class="large-9 columns">
                  <br /><br /><br /><br />
+				 <img src="/static/img/dashboard.jpg"/>
                   {% if not request.user.profile.account_verified %} (unverified user! Please verify!) {% endif %}
                  <p>Next Steps!</p>
 
-                 <p><a href="../profile/">Update Profile ></a></p>
+                 <p></p>
 
              <form action= {% url 'User_Profile.views.user_dashboard' %} method="POST">
-      		<input type="submit" value="Match Me!" id="toggle1" />
+			 <a href="../profile/"  class="expand button" value="Update Profile" /><div style="font-size:20pt">Update Profile</div></a>
+      		<input type="submit" class="expand alert button" value="Match Me" id="toggle1" style="font-size: 22pt"/>
       		{% csrf_token %}
             </form>
              </div>

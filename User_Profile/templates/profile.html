@@ -78,14 +78,16 @@
                     <section id="friends-list-container"></section>
 
              </div>
-             <div class="large-9 columns">
+             <div class="large-9 columns-centered">
              </br></br>
                  {%  for field in form %}
                     {{ field.error }}
                  {%  endfor %}
                   <form action="/profile/" method = "post"> {% csrf_token %}
                       {{ form.as_p }}
-                      <input type = "submit" value="Update" />
+					  <div align="right">
+						<input type = "submit" class="medium button" value="Update" />
+						</div>
                   </form>
                   <p>For Desires and Skills, separate each entry by a comma</p>
              </div>
