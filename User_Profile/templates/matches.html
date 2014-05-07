@@ -13,24 +13,30 @@
 {% block content %}
     <div class="row">
              <div class="large-3 columns">
-                  <h1>Your Matches!</h1>
+                  <h1>Hi Friend!</h1>
+				  <img src="/static/img/defaultuser.png" alt="User_Profile Image"/> 
              </div>
              <div class="large-9 columns">
              <br /><br />
-                 <table>
-	    <tr>
-	        <th>Match</th>
-	        <th>Teaching</th>
-	        <th>Learning</th>
-	    </tr>
-	    {% for item in matches %}
-	    <tr>
-	        <td><a href="{% url 'User_Profile.views.buddy' %}?user={{item.user2}}">{{ item.user2 }}</a></td>
-	        <td>{{ item.offering }}</td>
-	        <td>{{ item.recieving }}</td>
-	    </tr>
-	    {% endfor %}
-</table>
+			 <h3>Matches we found for you...</h3>
+		<table>
+			<thead>
+			<tr>
+				<th width="300"><h4>Match</h4></th>
+				<th width="250"><h4>Teaching</h4></th>
+				<th width="250"><h4>Learning</h4></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for item in matches %}
+			<tr>
+				<td><a href="{% url 'User_Profile.views.buddy' %}?user={{item.user2}}"><img src="{{ item.user2.profile.profile_image_url }}" width="40px"/>{{ item.user2 }}</a></td>
+				<td><div style="font-size:12pt">{{ item.offering }}</div></td>
+				<td><div style="font-size:12pt">{{ item.recieving }}</div></td>
+			</tr>
+			{% endfor %}
+			</tbody>
+	</table>
              </div>
 </div>
 {% endblock %}

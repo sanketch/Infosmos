@@ -12,8 +12,9 @@
 {% endblock %}
 {% block content %}
         <div class="row">
+			 <h1>Find out more about your buddy</h1>
              <div class="large-3 columns">
-                  <h1>Information on your buddy</h1>
+                 
                   <img src="{{ user2.user.profile.profile_image_url }}"/>
                  </br></br>
                   <a href="../messages/compose/{{ user2.user.username }}" class="expand radius button alert"><strong>Send a Message!</strong></a>
@@ -24,18 +25,41 @@
 
              </div>
              <div class="large-9 columns">
-                <h2>User Name</h2>
-				{{ user2.user.username }}
-				<h2> Gender </h2>
-				{{ user2.gender }}
-				<h2>Location</h2>
-				{{ user2.city }}
-				<h2>Skills List</h2>
-				{{ user2.SkillsList }}
-				<h2>Desires List</h2>
-				 {{ user2.DesiresList }}
-				<h2>Email</h2>
-				{{ user2.user.email }}
+			 <div class="row"><br><br><br><br><br></div>
+				<div class="row" >
+					<div class="columns" >
+						<table background-color="#000000">
+						  <thead>
+							<tr>
+							  <th width="200">User Name</th>
+							  <th width="350">{{ user2.user.username }}</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>Gender</td>
+							  <td>{{ user2.gender }}</td>
+							</tr>
+							<tr>
+							  <td>Location</td>
+							  <td>{{ user2.city }}</td>
+							</tr>
+							<tr>
+							  <td>Skills</td>
+							  <td>{{ user2.SkillsList }}</td>
+							</tr>
+							<tr>
+							  <td>Desires</td>
+							  <td> {{ user2.DesiresList }}</td>
+							</tr>
+							<tr>
+							  <td>Email</td>
+							  <td>{{ user2.user.email }}</td>
+							</tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>				
              </div>
         </div>
         <div>
