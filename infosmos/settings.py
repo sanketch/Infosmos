@@ -85,12 +85,10 @@ INSTALLED_APPS = (
 
     'django_messages',
     'chat',
+    'jqchat',
     #for test
     'django_nose',
 )
-
-
-
 
 
 SITE_ID = 2
@@ -103,8 +101,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
-
 
 ROOT_URLCONF = 'infosmos.urls'
 

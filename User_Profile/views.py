@@ -167,3 +167,14 @@ def user_profile(request):
     args['form'] = form
 
     return render_to_response('profile.html', args, context)
+
+@login_required
+def chat_test(request):
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
+    c={}
+    c.update(csrf(request))
+    context = RequestContext(request)
+
+    return render_to_response('chat_test.html', c, context)
